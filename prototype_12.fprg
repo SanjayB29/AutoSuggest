@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="sanja"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-23 03:11:33 PM"/>
+        <attribute name="created" value="c2FuamE7TEFQVE9QLTJQS0YySjBIOzIwMjEtMTItMjk7MDg6MjU6MzIgUE07MjgzNg=="/>
+        <attribute name="edited" value="c2FuamE7TEFQVE9QLTJQS0YySjBIOzIwMjEtMTItMjk7MDg6Mjc6NDYgUE07NjtzYW5qYTtMQVBUT1AtMlBLRjJKMEg7MjAyMS0xMi0yNDsxMTowODozMiBBTTtwcm90b3R5cGVfMy5mcHJnOzc1MjI="/>
+        <attribute name="edited" value="c2FuamE7TEFQVE9QLTJQS0YySjBIOzIwMjItMDEtMjE7MDE6MjE6MTkgUE07MTtzYW5qYTtMQVBUT1AtMlBLRjJKMEg7MjAyMi0wMS0xMzsxMjoyODowNiBQTTtidWJsZSBzb3J0LmZwcmc7NzM2MQ=="/>
+        <attribute name="edited" value="OTE2Mjg7QkhBVkFOQS1QQzsyMDIyLTAxLTIzOzAyOjA4OjA4IFBNOzM7MjMzOQ=="/>
+        <attribute name="edited" value="c2FuamE7TEFQVE9QLTJQS0YySjBIOzIwMjItMDQtMjM7MDM6MTE6MzMgUE07Mjg7Mjk4OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="x" type="String" array="True" size="30"/>
+            <declare name="sent" type="String" array="True" size="15"/>
+            <declare name="flag, FLAG1, emptyflag" type="Boolean" array="False" size=""/>
+            <declare name="word, temp" type="String" array="False" size=""/>
+            <declare name="emptyindex, i, j, OPT, n, m" type="Integer" array="False" size=""/>
+            <assign variable="flag" expression="false"/>
+            <assign variable="FLAG1" expression="true"/>
+            <assign variable="x[0]" expression="&quot;able&quot;"/>
+            <assign variable="x[1]" expression="&quot;acid&quot;"/>
+            <assign variable="x[2]" expression="&quot;aged&quot;"/>
+            <assign variable="x[3]" expression="&quot;also&quot;"/>
+            <assign variable="x[4]" expression="&quot;cast&quot;"/>
+            <assign variable="x[5]" expression="&quot;cats&quot;"/>
+            <assign variable="x[6]" expression="&quot;does&quot;"/>
+            <assign variable="x[7]" expression="&quot;dogs&quot;"/>
+            <assign variable="x[8]" expression="&quot;done&quot;"/>
+            <assign variable="x[9]" expression="&quot;door&quot;"/>
+            <assign variable="x[10]" expression="&quot;gray&quot;"/>
+            <assign variable="x[11]" expression="&quot;grey&quot;"/>
+            <assign variable="x[12]" expression="&quot;grow&quot;"/>
+            <assign variable="x[13]" expression="&quot;jump&quot;"/>
+            <assign variable="x[14]" expression="&quot;jury&quot;"/>
+            <assign variable="x[15]" expression="&quot;just&quot;"/>
+            <assign variable="x[16]" expression="&quot;lack&quot;"/>
+            <assign variable="x[17]" expression="&quot;land&quot;"/>
+            <assign variable="x[18]" expression="&quot;lady&quot;"/>
+            <assign variable="x[19]" expression="&quot;last&quot;"/>
+            <assign variable="x[20]" expression="&quot;lazy&quot;"/>
+            <assign variable="x[21]" expression="&quot;ugly&quot;"/>
+            <assign variable="x[22]" expression="&quot;unit&quot;"/>
+            <assign variable="x[23]" expression="&quot;upon&quot;"/>
+            <assign variable="n" expression="29"/>
+            <for variable="i" start="24" end="n" direction="inc" step="1">
+                <assign variable="x[i]" expression="&quot;~~~~&quot;"/>
+            </for>
+            <for variable="i" start="0" end="14" direction="inc" step="1">
+                <assign variable="sent[i]" expression="&quot;~~~~&quot;"/>
+            </for>
+            <assign variable="m" expression="0"/>
+            <while expression="FLAG1==true">
+                <comment text="Getting the word from the user&#13;&#10;"/>
+                <assign variable="word" expression="autosug(x,n)"/>
+                <assign variable="sent[m]" expression="word"/>
+                <assign variable="m" expression="m+1"/>
+                <comment text="Function to check if the word already exists in the dictionary"/>
+                <assign variable="flag" expression="check(word,x,n)"/>
+                <if expression="flag==false">
+                    <then>
+                        <output expression="&quot;Do u want to add the word to the dictionary?&quot;" newline="True"/>
+                        <output expression="&quot;1.YES&quot;" newline="True"/>
+                        <output expression="&quot;2.NO&quot;" newline="True"/>
+                        <input variable="OPT"/>
+                        <comment text="Function to check if there are empty spaces available in the dictionary&#13;&#10;"/>
+                        <assign variable="emptyflag" expression="checkempty(x)"/>
+                        <if expression="emptyflag==true">
+                            <then>
+                                <if expression="OPT==1">
+                                    <then>
+                                        <comment text="function to determine the first empty index space available in the dictionary"/>
+                                        <assign variable="emptyindex" expression="empty(x)"/>
+                                        <assign variable="x[emptyindex]" expression="word"/>
+                                        <output expression="&quot;Word added to the dictionary successfully!&quot;" newline="True"/>
+                                        <comment text="Sorting the dictionary"/>
+                                        <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                                            <for variable="j" start="0" end="n-i-2" direction="inc" step="1">
+                                                <if expression="x[j]&gt;x[j+1]">
+                                                    <then>
+                                                        <assign variable="temp" expression="x[j]"/>
+                                                        <assign variable="x[j]" expression="x[j+1]"/>
+                                                        <assign variable="x[j+1]" expression="temp"/>
+                                                    </then>
+                                                    <else/>
+                                                </if>
+                                            </for>
+                                        </for>
+                                    </then>
+                                    <else>
+                                        <if expression="OPT==2">
+                                            <then/>
+                                            <else>
+                                                <output expression="&quot;INVALID OPTION&quot;" newline="True"/>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <output expression="&quot;No more empty spaces&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <assign variable="FLAG1" expression="CONTINUE()"/>
+                    </then>
+                    <else>
+                        <assign variable="FLAG1" expression="CONTINUE()"/>
+                    </else>
+                </if>
+            </while>
+            <comment text="Function to display the sentence."/>
+            <call expression="displays(sent)"/>
+            <comment text="Function to display the updated dictionary depending on user's wish."/>
+            <call expression="display(x)"/>
+            <output expression="&quot;Thank you for using our Autosuggest!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="autosug" type="String" variable="word">
+        <parameters>
+            <parameter name="x" type="String" array="True"/>
+            <parameter name="n" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <comment text="To suggest words from the existing dictionary by matching with the letters entered by the user.&#13;&#10;"/>
+            <comment text="Also, to take input if the word doesn't exist in the dictionary."/>
+            <declare name="word, first, second, third, fourth" type="String" array="False" size=""/>
+            <declare name="i, option, lettercount" type="Integer" array="False" size=""/>
+            <declare name="flag, f1, f2, f3, f4" type="Boolean" array="False" size=""/>
+            <assign variable="flag" expression="false"/>
+            <assign variable="f4" expression="false"/>
+            <while expression="flag==false">
+                <output expression="&quot;Enter the first character&quot;" newline="True"/>
+                <assign variable="first" expression="input()"/>
+                <assign variable="f1" expression="false"/>
+                <for variable="i" start="0" end="n" direction="inc" step="1">
+                    <if expression="char(x[i],0)==first">
+                        <then>
+                            <output expression="(i+1)&amp;&quot;,&quot;&amp;x[i]" newline="True"/>
+                            <assign variable="f1" expression="true"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="f1==true">
+                    <then>
+                        <output expression="&quot;Choose the word or 0 for none of the above&quot;" newline="True"/>
+                        <input variable="option"/>
+                        <if expression="option==0">
+                            <then>
+                                <output expression="&quot;Enter the second character&quot;" newline="True"/>
+                                <assign variable="second" expression="input()"/>
+                                <assign variable="f2" expression="false"/>
+                                <for variable="i" start="0" end="n" direction="inc" step="1">
+                                    <if expression="char(x[i],0)==first &amp;&amp; char(x[i],1)==second">
+                                        <then>
+                                            <output expression="(i+1)&amp;&quot;,&quot;&amp;x[i]" newline="True"/>
+                                            <assign variable="f2" expression="true"/>
+                                        </then>
+                                        <else/>
+                                    </if>
+                                </for>
+                                <if expression="f2==true">
+                                    <then>
+                                        <output expression="&quot;Choose the word or 0 for none of the above&quot;" newline="True"/>
+                                        <input variable="option"/>
+                                        <if expression="option==0">
+                                            <then>
+                                                <output expression="&quot;Enter the third character&quot;" newline="True"/>
+                                                <assign variable="third" expression="input()"/>
+                                                <assign variable="f3" expression="false"/>
+                                                <for variable="i" start="0" end="n" direction="inc" step="1">
+                                                    <if expression="char(x[i],0)==first &amp;&amp; char(x[i],1)==second &amp;&amp; char(x[i],2)==third">
+                                                        <then>
+                                                            <output expression="(i+1)&amp;&quot;,&quot;&amp;x[i]" newline="True"/>
+                                                            <assign variable="f3" expression="true"/>
+                                                        </then>
+                                                        <else/>
+                                                    </if>
+                                                </for>
+                                                <if expression="f3==true">
+                                                    <then>
+                                                        <output expression="&quot;Choose the word or 0 for none of the above&quot;" newline="True"/>
+                                                        <input variable="option"/>
+                                                        <if expression="option==0">
+                                                            <then>
+                                                                <output expression="&quot;Enter the fourth character&quot;" newline="True"/>
+                                                                <assign variable="fourth" expression="input()"/>
+                                                                <assign variable="f4" expression="false"/>
+                                                                <for variable="i" start="0" end="n" direction="inc" step="1">
+                                                                    <if expression="char(x[i],0)==first &amp;&amp; char(x[i],1)==second &amp;&amp; char(x[i],2)==third &amp;&amp; char(x[i],3)==fourth">
+                                                                        <then>
+                                                                            <output expression="&quot;The word is: &quot;&amp;x[i]" newline="True"/>
+                                                                            <assign variable="word" expression="x[i]"/>
+                                                                            <assign variable="f4" expression="true"/>
+                                                                        </then>
+                                                                        <else/>
+                                                                    </if>
+                                                                </for>
+                                                                <assign variable="lettercount" expression="4"/>
+                                                            </then>
+                                                            <else>
+                                                                <output expression="&quot;The word is:&quot;&amp;x[option-1]" newline="True"/>
+                                                                <assign variable="word" expression="x[option-1]"/>
+                                                                <assign variable="f4" expression="true"/>
+                                                            </else>
+                                                        </if>
+                                                    </then>
+                                                    <else>
+                                                        <assign variable="lettercount" expression="3"/>
+                                                    </else>
+                                                </if>
+                                            </then>
+                                            <else>
+                                                <output expression="&quot;The word is:&quot;&amp;x[option-1]" newline="True"/>
+                                                <assign variable="word" expression="x[option-1]"/>
+                                                <assign variable="f4" expression="true"/>
+                                            </else>
+                                        </if>
+                                    </then>
+                                    <else>
+                                        <assign variable="lettercount" expression="2"/>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <output expression="&quot;The word is:&quot;&amp;x[option-1]" newline="True"/>
+                                <assign variable="word" expression="x[option-1]"/>
+                                <assign variable="f4" expression="true"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <assign variable="lettercount" expression="1"/>
+                    </else>
+                </if>
+                <assign variable="flag" expression="true"/>
+            </while>
+            <comment text="To take input if the word entered is not there in the dictionary."/>
+            <if expression="f4==false">
+                <then>
+                    <output expression="&quot;No word found&quot;" newline="True"/>
+                    <if expression="lettercount==1">
+                        <then>
+                            <output expression="&quot;Enter the second character&quot;" newline="True"/>
+                            <assign variable="second" expression="input()"/>
+                            <output expression="&quot;Enter the third character&quot;" newline="True"/>
+                            <assign variable="third" expression="input()"/>
+                            <output expression="&quot;Enter the fourth character&quot;" newline="True"/>
+                            <assign variable="fourth" expression="input()"/>
+                        </then>
+                        <else>
+                            <if expression="lettercount==2">
+                                <then>
+                                    <output expression="&quot;Enter the third character&quot;" newline="True"/>
+                                    <assign variable="third" expression="input()"/>
+                                    <output expression="&quot;Enter the fourth character&quot;" newline="True"/>
+                                    <assign variable="fourth" expression="input()"/>
+                                </then>
+                                <else>
+                                    <if expression="lettercount==3">
+                                        <then>
+                                            <output expression="&quot;Enter the fourth character&quot;" newline="True"/>
+                                            <assign variable="fourth" expression="input()"/>
+                                        </then>
+                                        <else/>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </then>
+                <else/>
+            </if>
+            <assign variable="word" expression="merge(first,second,third,fourth)"/>
+            <output expression="&quot;The word is:&quot;&amp;word" newline="True"/>
+        </body>
+    </function>
+    <function name="check" type="Boolean" variable="flag">
+        <parameters>
+            <parameter name="word" type="String" array="False"/>
+            <parameter name="x" type="String" array="True"/>
+            <parameter name="n" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <comment text="To check if the word entered is existing in the dictionary."/>
+            <declare name="flag" type="Boolean" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="flag" expression="false"/>
+            <for variable="i" start="0" end="n" direction="inc" step="1">
+                <if expression="x[i]==word">
+                    <then>
+                        <assign variable="flag" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="checkempty" type="Boolean" variable="flag">
+        <parameters>
+            <parameter name="x" type="String" array="True"/>
+        </parameters>
+        <body>
+            <comment text="To check if there are any empty spaces left in the dictionary to add new words. "/>
+            <declare name="flag" type="Boolean" array="False" size=""/>
+            <if expression="x[14]==&quot;~~~~&quot;">
+                <then>
+                    <assign variable="flag" expression="true"/>
+                </then>
+                <else>
+                    <assign variable="flag" expression="false"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="CONTINUE" type="Boolean" variable="FLAG">
+        <parameters/>
+        <body>
+            <comment text="To ask if the user wishes to continue to the next work or not."/>
+            <declare name="FLAG" type="Boolean" array="False" size=""/>
+            <declare name="OPT" type="Integer" array="False" size=""/>
+            <output expression="&quot;Do u want to move to the next word?&quot;" newline="True"/>
+            <output expression="&quot;1.YES&quot;" newline="True"/>
+            <output expression="&quot;2.NO&quot;" newline="True"/>
+            <input variable="OPT"/>
+            <assign variable="FLAG" expression="true"/>
+            <while expression="opt!=1 &amp;&amp; opt!=2">
+                <input variable="OPT"/>
+            </while>
+            <if expression="OPT==1">
+                <then/>
+                <else>
+                    <assign variable="FLAG" expression="false"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="display" type="None" variable="">
+        <parameters>
+            <parameter name="arr" type="String" array="True"/>
+        </parameters>
+        <body>
+            <comment text="To display the words of the updated dictionary."/>
+            <declare name="OPT, i, n" type="Integer" array="False" size=""/>
+            <assign variable="n" expression="empty(arr)"/>
+            <do expression="OPT!=1 &amp;&amp; OPT!=2">
+                <output expression="&quot;Do u want to view the dictionary?&#13;&#10;1. yes 2.no&quot;" newline="True"/>
+                <input variable="OPT"/>
+                <if expression="OPT==1">
+                    <then>
+                        <output expression="&quot;The Dictionary:&quot;" newline="True"/>
+                        <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                            <output expression="(i+1)&amp;&quot;. &quot;&amp;arr[i]" newline="True"/>
+                        </for>
+                    </then>
+                    <else/>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="displays" type="None" variable="">
+        <parameters>
+            <parameter name="sent" type="String" array="True"/>
+        </parameters>
+        <body>
+            <comment text="To display the sentence."/>
+            <declare name="i, m" type="Integer" array="False" size=""/>
+            <declare name="x, y" type="String" array="False" size=""/>
+            <assign variable="m" expression="empty(sent)"/>
+            <assign variable="x" expression="sent[0]"/>
+            <comment text="To capitalize the first letter of the first word in the sentence."/>
+            <if expression="ToCode(char(x,0))&gt;=65 &amp;&amp; ToCode(char(x,0))&lt;=90">
+                <then/>
+                <else>
+                    <assign variable="y" expression="ToChar(ToCode(Char(x,0))-32)"/>
+                    <for variable="i" start="1" end="3" direction="inc" step="1">
+                        <assign variable="y" expression="y&amp;char(x,i)"/>
+                    </for>
+                    <assign variable="sent[0]" expression="y"/>
+                </else>
+            </if>
+            <comment text="Displaying the sentence"/>
+            <output expression="&quot;The sentence:&quot;" newline="True"/>
+            <for variable="i" start="0" end="m-1" direction="inc" step="1">
+                <output expression="&quot; &quot;" newline="False"/>
+                <output expression="sent[i]" newline="False"/>
+            </for>
+            <output expression="&quot;.&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="empty" type="Integer" variable="i">
+        <parameters>
+            <parameter name="x" type="String" array="True"/>
+        </parameters>
+        <body>
+            <comment text="To check and return the index of the corresponding empty space in the dictionary. "/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="flag" type="Boolean" array="False" size=""/>
+            <assign variable="flag" expression="false"/>
+            <assign variable="i" expression="0"/>
+            <while expression="flag==false &amp;&amp; i&lt;size(x)">
+                <if expression="x[i]==&quot;~~~~&quot;">
+                    <then>
+                        <assign variable="flag" expression="true"/>
+                    </then>
+                    <else>
+                        <assign variable="i" expression="i+1"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+    <function name="input" type="String" variable="l">
+        <parameters/>
+        <body>
+            <comment text="To restrict the user from entering characters other than single alphabet at a time. "/>
+            <declare name="l" type="String" array="False" size=""/>
+            <declare name="c" type="Integer" array="False" size=""/>
+            <declare name="f1, f2" type="Boolean" array="False" size=""/>
+            <do expression="f1==false &amp;&amp; f2==false">
+                <input variable="l"/>
+                <if expression="Len(l)==1">
+                    <then>
+                        <assign variable="c" expression="ToCode(l)"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Enter only one character!&quot;" newline="True"/>
+                        <assign variable="c" expression="0"/>
+                    </else>
+                </if>
+                <if expression="c&gt;= 97 &amp;&amp; c&lt;=122">
+                    <then>
+                        <assign variable="f1" expression="true"/>
+                    </then>
+                    <else>
+                        <assign variable="f1" expression="false"/>
+                    </else>
+                </if>
+                <if expression="c&gt;=65 &amp;&amp; c&lt;=90">
+                    <then>
+                        <assign variable="f2" expression="true"/>
+                    </then>
+                    <else>
+                        <assign variable="f2" expression="false"/>
+                    </else>
+                </if>
+                <if expression="f1==false &amp;&amp; f2==false">
+                    <then>
+                        <if expression="Len(l)==1">
+                            <then>
+                                <output expression="&quot;Enter an alphabet.&quot;" newline="True"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </then>
+                    <else/>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="merge" type="String" variable="x">
+        <parameters>
+            <parameter name="a" type="String" array="False"/>
+            <parameter name="b" type="String" array="False"/>
+            <parameter name="c" type="String" array="False"/>
+            <parameter name="d" type="String" array="False"/>
+        </parameters>
+        <body>
+            <comment text="To merge the individual letters obtained to make a word."/>
+            <declare name="x" type="String" array="False" size=""/>
+            <assign variable="x" expression="a&amp;b&amp;c&amp;d"/>
+        </body>
+    </function>
+</flowgorithm>
